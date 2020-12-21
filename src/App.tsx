@@ -1,24 +1,69 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { createUseStyles } from 'react-jss';
+import { AlternativesOne } from './components/AlternativesOne';
+import { AlternativesTwo } from './components/AlternativesTwo';
+import { AlternativesThree } from './components/AlternativesThree';
+import { Header } from './components/Header';
+import { QUESTIONS } from './components/Questions';
+
+export type State = {
+  president: string;
+  javaScriptCreated: string;
+  CSSAcronym: string;
+  HTMLAcronym: string;
+  clgTypeOf: string;
+};
+
+export const defaultState = {
+  president: '',
+  javaScriptCreated: '',
+  CSSAcronym: '',
+  HTMLAcronym: '',
+  clgTypeOf: '',
+};
+
+const useStyles = createUseStyles({
+  container: {
+    maxWidth: '1140px',
+    margin: 'auto',
+    padding: '1rem',
+  },
+});
 
 function App() {
+  const [numOfQuestion, setNumOfQuestion] = useState(0);
+  const [state, setState] = useState(defaultState);
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.container}>
+      <Header
+        numOfQuestion={numOfQuestion}
+        question={QUESTIONS[numOfQuestion]}
+      ></Header>
+      {numOfQuestion === 0 && (
+        <AlternativesOne
+          numOfQuestion={numOfQuestion}
+          setNumOfQuestion={setNumOfQuestion}
+          state={state}
+          setState={setState}
+        />
+      )}
+      {numOfQuestion === 1 && (
+        <AlternativesTwo
+          numOfQuestion={numOfQuestion}
+          setNumOfQuestion={setNumOfQuestion}
+          state={state}
+          setState={setState}
+        />
+      )}
+      {numOfQuestion === 2 && (
+        <AlternativesThree
+          numOfQuestion={numOfQuestion}
+          setNumOfQuestion={setNumOfQuestion}
+          state={state}
+          setState={setState}
+        />
+      )}
     </div>
   );
 }
