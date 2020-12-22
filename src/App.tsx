@@ -3,6 +3,8 @@ import { createUseStyles } from 'react-jss';
 import { AlternativesOne } from './components/AlternativesOne';
 import { AlternativesTwo } from './components/AlternativesTwo';
 import { AlternativesThree } from './components/AlternativesThree';
+import { AlternativesFour } from './components/AlternativesFour';
+import { AlternativesFive } from './components/AlternativesFive';
 import { Header } from './components/Header';
 import { QUESTIONS } from './components/Questions';
 
@@ -58,6 +60,22 @@ function App() {
       )}
       {numOfQuestion === 2 && (
         <AlternativesThree
+          numOfQuestion={numOfQuestion}
+          setNumOfQuestion={setNumOfQuestion}
+          state={state}
+          setState={setState}
+        />
+      )}
+      {numOfQuestion === 3 && (
+        <AlternativesFour
+          numOfQuestion={numOfQuestion}
+          setNumOfQuestion={setNumOfQuestion}
+          state={state}
+          setState={setState}
+        />
+      )}
+      {numOfQuestion === 4 && (
+        <AlternativesFive
           numOfQuestion={numOfQuestion}
           setNumOfQuestion={setNumOfQuestion}
           state={state}

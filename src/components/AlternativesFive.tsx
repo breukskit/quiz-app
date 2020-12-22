@@ -1,6 +1,6 @@
 import React, { FormEvent, SyntheticEvent } from 'react';
 import { createUseStyles } from 'react-jss';
-import { State, defaultState } from '../App';
+import { State } from '../App';
 
 interface IProps {
   numOfQuestion: number;
@@ -50,7 +50,6 @@ const useStyles = createUseStyles({
     border: '2px solid black',
     transition: 'all 200ms',
     fontWeight: '600',
-    marginBottom: '.5rem',
     '&:hover': {
       cursor: 'pointer',
       backgroundColor: 'black',
@@ -59,7 +58,7 @@ const useStyles = createUseStyles({
   },
 });
 
-export const AlternativesTwo = (props: IProps) => {
+export const AlternativesFive = (props: IProps) => {
   const { numOfQuestion, setNumOfQuestion, state, setState } = props;
   const classes = useStyles();
   const handleChange = (e: SyntheticEvent) => {
@@ -68,13 +67,9 @@ export const AlternativesTwo = (props: IProps) => {
   };
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (state.javaScriptCreated !== '') {
+    if (state.president !== '') {
       setNumOfQuestion(numOfQuestion + 1);
     }
-  };
-  const restart = () => {
-    setState(defaultState);
-    setNumOfQuestion(0);
   };
   return (
     <div>
@@ -83,55 +78,52 @@ export const AlternativesTwo = (props: IProps) => {
           <div className={classes.radioContainer}>
             <input
               type="radio"
-              name="javaScriptCreated"
-              value="june1995"
-              id="june1995"
+              name="clgTypeOf"
+              value="array"
+              id="array"
               className={classes.radioInput}
               onChange={handleChange}
             />
-            <label htmlFor="junge1995">June 1995</label>
+            <label htmlFor="array">array</label>
           </div>
           <div className={classes.radioContainer}>
             <input
               type="radio"
-              name="javaScriptCreated"
-              value="may1995"
-              id="may1995"
+              name="clgTypeOf"
+              value="object"
+              id="object"
               className={classes.radioInput}
               onChange={handleChange}
             />
-            <label htmlFor="may1995">May 1995</label>
+            <label htmlFor="object">object</label>
           </div>
           <div className={classes.radioContainer}>
             <input
               type="radio"
-              name="javaScriptCreated"
-              value="july1885"
-              id="july1885"
+              name="clgTypeOf"
+              value="squareBrackets"
+              id="squareBrackets"
               className={classes.radioInput}
               onChange={handleChange}
             />
-            <label htmlFor="july1885">July 1885</label>
+            <label htmlFor="squareBrackets">Square Brackets</label>
           </div>
           <div className={classes.radioContainer}>
             <input
               type="radio"
-              name="javaScriptCreated"
-              value="september1996"
-              id="september1996"
+              name="clgTypeOf"
+              value="emptyArray"
+              id="emptyArray"
               className={classes.radioInput}
               onChange={handleChange}
             />
-            <label htmlFor="september1996">September 1996</label>
+            <label htmlFor="emptyArray">Empty Array</label>
           </div>
         </div>
         <button className={classes.nextButton} type="submit">
           Next
         </button>
       </form>
-      <button onClick={restart} className={classes.nextButton}>
-        Restart
-      </button>
     </div>
   );
 };

@@ -78,46 +78,48 @@ export const AlternativesThree = (props: IProps) => {
           <div className={classes.radioContainer}>
             <input
               type="radio"
-              name="president"
-              value="barrack"
-              id="barrack"
+              name="CSSAcronym"
+              value="countrySheriffService"
+              id="countrySheriffService"
               className={classes.radioInput}
               onChange={handleChange}
             />
-            <label htmlFor="barrack">Barrack</label>
+            <label htmlFor="countrySheriffService">
+              Country Sheriff Service
+            </label>
           </div>
           <div className={classes.radioContainer}>
             <input
               type="radio"
-              name="president"
-              value="osama"
-              id="osama"
+              name="CSSAcronym"
+              value="cascadingSexySheets"
+              id="cascadingSexySheets"
               className={classes.radioInput}
               onChange={handleChange}
             />
-            <label htmlFor="osama">Osama</label>
+            <label htmlFor="cascadingSexySheets">Cascading Sexy Sheets</label>
           </div>
           <div className={classes.radioContainer}>
             <input
               type="radio"
-              name="president"
-              value="george"
-              id="george"
+              name="CSSAcronym"
+              value="cascadingStyleSheets"
+              id="cascadingStyleSheets"
               className={classes.radioInput}
               onChange={handleChange}
             />
-            <label htmlFor="george">George</label>
+            <label htmlFor="cascadingStyleSheets">Cascading Style Sheets</label>
           </div>
           <div className={classes.radioContainer}>
             <input
               type="radio"
-              name="president"
-              value="monkey"
-              id="monkey"
+              name="CSSAcronym"
+              value="columnStableSheets"
+              id="columnStableSheets"
               className={classes.radioInput}
               onChange={handleChange}
             />
-            <label htmlFor="monkey">Monkey</label>
+            <label htmlFor="columnStableSheets">Column Stable Sheets</label>
           </div>
         </div>
         <button className={classes.nextButton} type="submit">
