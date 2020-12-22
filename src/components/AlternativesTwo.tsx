@@ -7,6 +7,8 @@ interface IProps {
   setNumOfQuestion: React.Dispatch<React.SetStateAction<number>>;
   state: State;
   setState: React.Dispatch<React.SetStateAction<State>>;
+  score: number;
+  setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const useStyles = createUseStyles({
@@ -60,7 +62,14 @@ const useStyles = createUseStyles({
 });
 
 export const AlternativesTwo = (props: IProps) => {
-  const { numOfQuestion, setNumOfQuestion, state, setState } = props;
+  const {
+    numOfQuestion,
+    setNumOfQuestion,
+    state,
+    setState,
+    score,
+    setScore,
+  } = props;
   const classes = useStyles();
   const handleChange = (e: SyntheticEvent) => {
     const target = e.currentTarget as HTMLInputElement;
@@ -69,11 +78,15 @@ export const AlternativesTwo = (props: IProps) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (state.javaScriptCreated !== '') {
+      if (state.javaScriptCreated === 'september1995') {
+        setScore(score + 20);
+      }
       setNumOfQuestion(numOfQuestion + 1);
     }
   };
   const restart = () => {
     setState(defaultState);
+    setScore(0);
     setNumOfQuestion(0);
   };
   return (
@@ -117,12 +130,12 @@ export const AlternativesTwo = (props: IProps) => {
             <input
               type="radio"
               name="javaScriptCreated"
-              value="september1996"
-              id="september1996"
+              value="september1995"
+              id="september1995"
               className={classes.radioInput}
               onChange={handleChange}
             />
-            <label htmlFor="september1996">September 1996</label>
+            <label htmlFor="september1995">September 1995</label>
           </div>
         </div>
         <button className={classes.nextButton} type="submit">

@@ -5,6 +5,7 @@ import { AlternativesTwo } from './components/AlternativesTwo';
 import { AlternativesThree } from './components/AlternativesThree';
 import { AlternativesFour } from './components/AlternativesFour';
 import { AlternativesFive } from './components/AlternativesFive';
+import { Result } from './components/Result';
 import { Header } from './components/Header';
 import { QUESTIONS } from './components/Questions';
 
@@ -35,19 +36,34 @@ const useStyles = createUseStyles({
 function App() {
   const [numOfQuestion, setNumOfQuestion] = useState(0);
   const [state, setState] = useState(defaultState);
+  const [score, setScore] = useState(0);
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <Header
-        numOfQuestion={numOfQuestion}
-        question={QUESTIONS[numOfQuestion]}
-      ></Header>
+      {numOfQuestion > 4 && (
+        <Result
+          numOfQuestion={numOfQuestion}
+          setNumOfQuestion={setNumOfQuestion}
+          state={state}
+          setState={setState}
+          score={score}
+          setScore={setScore}
+        />
+      )}
+      {numOfQuestion < 5 && (
+        <Header
+          numOfQuestion={numOfQuestion}
+          question={QUESTIONS[numOfQuestion]}
+        ></Header>
+      )}
       {numOfQuestion === 0 && (
         <AlternativesOne
           numOfQuestion={numOfQuestion}
           setNumOfQuestion={setNumOfQuestion}
           state={state}
           setState={setState}
+          score={score}
+          setScore={setScore}
         />
       )}
       {numOfQuestion === 1 && (
@@ -56,6 +72,8 @@ function App() {
           setNumOfQuestion={setNumOfQuestion}
           state={state}
           setState={setState}
+          score={score}
+          setScore={setScore}
         />
       )}
       {numOfQuestion === 2 && (
@@ -64,6 +82,8 @@ function App() {
           setNumOfQuestion={setNumOfQuestion}
           state={state}
           setState={setState}
+          score={score}
+          setScore={setScore}
         />
       )}
       {numOfQuestion === 3 && (
@@ -72,6 +92,8 @@ function App() {
           setNumOfQuestion={setNumOfQuestion}
           state={state}
           setState={setState}
+          score={score}
+          setScore={setScore}
         />
       )}
       {numOfQuestion === 4 && (
@@ -80,6 +102,8 @@ function App() {
           setNumOfQuestion={setNumOfQuestion}
           state={state}
           setState={setState}
+          score={score}
+          setScore={setScore}
         />
       )}
     </div>

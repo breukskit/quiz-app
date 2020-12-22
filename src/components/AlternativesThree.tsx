@@ -1,12 +1,14 @@
 import React, { FormEvent, SyntheticEvent } from 'react';
 import { createUseStyles } from 'react-jss';
-import { State } from '../App';
+import { State, defaultState } from '../App';
 
 interface IProps {
   numOfQuestion: number;
   setNumOfQuestion: React.Dispatch<React.SetStateAction<number>>;
   state: State;
   setState: React.Dispatch<React.SetStateAction<State>>;
+  score: number;
+  setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const useStyles = createUseStyles({
@@ -50,6 +52,7 @@ const useStyles = createUseStyles({
     border: '2px solid black',
     transition: 'all 200ms',
     fontWeight: '600',
+    marginBottom: '.5rem',
     '&:hover': {
       cursor: 'pointer',
       backgroundColor: 'black',
@@ -59,7 +62,14 @@ const useStyles = createUseStyles({
 });
 
 export const AlternativesThree = (props: IProps) => {
-  const { numOfQuestion, setNumOfQuestion, state, setState } = props;
+  const {
+    numOfQuestion,
+    setNumOfQuestion,
+    state,
+    setState,
+    score,
+    setScore,
+  } = props;
   const classes = useStyles();
   const handleChange = (e: SyntheticEvent) => {
     const target = e.currentTarget as HTMLInputElement;
@@ -67,9 +77,17 @@ export const AlternativesThree = (props: IProps) => {
   };
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (state.president !== '') {
+    if (state.CSSAcronym !== '') {
+      if (state.CSSAcronym === 'cascadingStyleSheets') {
+        setScore(score + 20);
+      }
       setNumOfQuestion(numOfQuestion + 1);
     }
+  };
+  const restart = () => {
+    setState(defaultState);
+    setScore(0);
+    setNumOfQuestion(0);
   };
   return (
     <div>
@@ -126,6 +144,9 @@ export const AlternativesThree = (props: IProps) => {
           Next
         </button>
       </form>
+      <button onClick={restart} className={classes.nextButton}>
+        Restart
+      </button>
     </div>
   );
 };

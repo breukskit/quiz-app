@@ -7,6 +7,8 @@ interface IProps {
   setNumOfQuestion: React.Dispatch<React.SetStateAction<number>>;
   state: State;
   setState: React.Dispatch<React.SetStateAction<State>>;
+  score: number;
+  setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const useStyles = createUseStyles({
@@ -59,7 +61,14 @@ const useStyles = createUseStyles({
 });
 
 export const AlternativesOne = (props: IProps) => {
-  const { numOfQuestion, setNumOfQuestion, state, setState } = props;
+  const {
+    numOfQuestion,
+    setNumOfQuestion,
+    state,
+    setState,
+    score,
+    setScore,
+  } = props;
   const classes = useStyles();
   const handleChange = (e: SyntheticEvent) => {
     const target = e.currentTarget as HTMLInputElement;
@@ -68,6 +77,9 @@ export const AlternativesOne = (props: IProps) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (state.president !== '') {
+      if (state.president === 'george') {
+        setScore(score + 20);
+      }
       setNumOfQuestion(numOfQuestion + 1);
     }
   };
